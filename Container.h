@@ -37,4 +37,9 @@ public:
     void search_train(const int number);
 
     Container& operator[](int index);
+
+
+    void printTrainsToTime(const string& time);
+    void splitTime(const string& t, int& h, int& m);
+
 };

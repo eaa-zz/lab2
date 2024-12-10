@@ -1,13 +1,13 @@
 #include "container.h"
-
-Container::Container() : head(nullptr), tail(nullptr), count(0) {cout << "Вызван конструктор без параметров для класса Container\n";}
+#include <sstream>
+Container::Container() : head(nullptr), tail(nullptr), count(0) {cout << "The constructor without parameters for the Container class is called\n";}
 
 Container::Container(Node* h, Node* t, const int c) : head(h), tail(t), count(c) {
-    cout << "Вызван конструктор с параметрами для класса Container\n";
+    cout << "The constructor with parameters for the Container class is called\n";
 }
 
 Container::Container(const Container& other) : head(other.head), tail(other.tail), count(other.count) {
-    cout << "Вызван конструктор копирования для класса Container\n";
+    cout << "The copy constructor for the Container class is called\n";
 }
 
 Container::~Container() {
@@ -19,7 +19,7 @@ Container::~Container() {
     }
     tail = nullptr;
     count = 0;
-    cout << "Вызван деструктор для класса Container" << endl;
+    cout << "The destructor for the Container class is called" << endl;
 }
 
 
@@ -97,12 +97,12 @@ Container& Container::delete_train(int index) {
 void Container::display_trains() {
     Node* temp = head;
     if (count == 0) {
-        cout << "Поездов нет" << endl;
+        cout << "There are no trains" << endl;
         return;
     }
     int index = 1;
     while (temp != 0) {
-        cout << index << " - Информация о поезде:\n";
+        cout << index << " -Information about the train:\n";
         temp->data->display_train();
         temp = temp->next;
         index++;
@@ -114,7 +114,7 @@ void Container::sort_trains_by_number() {
 
     for (Node* i = head; i != nullptr; i = i->next) {
         for (Node* j = head; j->next != nullptr; j = j->next) {
-            if (j->data->get_number() > j->next->data->get_number()) {
+            if (j->data->get_destination() > j->next->data->get_destination()) {
                 Train* temp = j->data;
                 j->data = j->next->data;
                 j->next->data = temp;
@@ -123,18 +123,6 @@ void Container::sort_trains_by_number() {
     }
 }
 
-void Container::search_train(const int number) {
-
-    Node* temp = head;
-    while (temp != nullptr) {
-        if (temp->data->get_number() == number) {
-            temp->data->display_train();
-            return;
-        }
-        temp = temp->next;
-    }
-    cout << "Поезд с номером " << number << " не найден." << endl;
-}
 
 Container& Container::edit_train(int index) {
     if (index < 0 || index >= count) {
@@ -161,4 +149,33 @@ Container& Container::operator[](int index) {
     }
 
     return *this;
+}
+
+
+
+void Container::splitTime(const string& t, int& h, int& m) {
+
+    stringstream ss(t);
+    char colon;
+    ss >> h >> colon >> m;
+}
+
+void Container::printTrainsToTime(const string& time) {
+
+    Node* temp = head;
+    int hourstemp, minutestemp, hours, minutes;
+    splitTime(time, hours, minutes);
+    while (temp != nullptr) {
+        splitTime(temp->data->get_time(), hourstemp, minutestemp);
+        if (hourstemp == hours && minutestemp >= minutes) {
+            temp->data->display_train();
+        }
+        else if(hourstemp > hours){
+            temp->data->display_train();
+        }
+        else if(hourstemp > hours){
+            cout << "Train  not found." << endl;;
+        }
+        temp = temp->next;
+    }
 }

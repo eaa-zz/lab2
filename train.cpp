@@ -1,16 +1,16 @@
 #include "train.h"
 
-Train::Train() : destination(""), number(0), time_of_departure("") {cout << "Вызван конструктор без параметров для класса Train\n";}
+Train::Train() : destination(""), number(0), time_of_departure("") {cout << "The constructor without parameters for the Train class is called\n";}
 
 Train::Train(const string& d, const int& n, const string& t) : destination(d), number(n), time_of_departure(t) {
-    cout << "Вызван конструктор с параметрами для класса Train\n";
+    cout << "The constructor with parameters for the Train class is called\n";
 }
 
 Train::Train(const Train& other) : destination(other.destination), number(other.number), time_of_departure(other.time_of_departure) {
-    cout << "Вызван конструктор копирования для класса Train\n";
+    cout << "The copy constructor for the Train class is called\n";
 }
 
-Train::~Train() {cout << "Вызван деструктор для класса Train\n";}
+Train::~Train() {cout << "The destructor for the Train class is called\n";}
 
 string Train::get_destination() {
     return this->destination;
@@ -37,25 +37,25 @@ void Train::set_time(const string& t) {
 }
 
 void Train::display_train() {
-    cout << "Пункт назначения: " << this->get_destination() << endl;
-    cout << "Номер поезда: " << this->get_number() << endl;
-    cout << "Время отправления: " << this->get_time() << endl; 
+    cout << "destination: " << this->get_destination() << endl;
+    cout << "number: " << this->get_number() << endl;
+    cout << "time: " << this->get_time() << endl; 
     cout << endl;
 }
 
 void Train::edit_train() {
     int choice;
-    cout << "Выберите, что хотите изменить:\n";
-    cout << "1. Пункт назначения\n";
-    cout << "2. Номер поезда\n";
-    cout << "3. Время отправления\n";
-    cout << "Введите ваш выбор: ";
+    cout << "Choose what you want to changeь:\n";
+    cout << "1. destination\n";
+    cout << "2. number\n";
+    cout << "3. time\n";
+    cout << "choice: ";
     cin >> choice;
 
     switch (choice) {
         case 1: {
             string new_destination;
-            cout << "Введите новый пункт назначения: ";
+            cout << "new destination: ";
             cin.ignore();
             getline(cin, new_destination);
             set_destination(new_destination);
@@ -63,20 +63,20 @@ void Train::edit_train() {
         }
         case 2: {
             int new_number;
-            cout << "Введите новый номер поезда: ";
+            cout << "new number: ";
             cin >> new_number;
             set_number(new_number);
             break;
         }
         case 3: {
             string new_time;
-            cout << "Введите новое время отправления: ";
+            cout << "new time: ";
             cin.ignore();
             getline(cin, new_time);
             set_time(new_time);
             break;
         }
         default:
-            cout << "Неверный выбор!" << endl;
+            cout << "Error!" << endl;
     }
 }

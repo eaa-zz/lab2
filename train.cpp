@@ -1,16 +1,15 @@
 #include "train.h"
 
-Train::Train() : destination(""), number(0), time_of_departure("") {cout << "The constructor without parameters for the Train class is called\n";}
+Train::Train() : destination(""), number(0), time_of_departure("") //{cout << "The constructor without parameters for the Train class is called\n";}
 
-Train::Train(const string& d, const int& n, const string& t) : destination(d), number(n), time_of_departure(t) {
-    cout << "The constructor with parameters for the Train class is called\n";
-}
+Train::Train(const string& d, const int& n, const string& t) : destination(d), number(n), time_of_departure(t) //{
+    //cout << "The constructor with parameters for the Train class is called\n";
+//}
 
-Train::Train(const Train& other) : destination(other.destination), number(other.number), time_of_departure(other.time_of_departure) {
-    cout << "The copy constructor for the Train class is called\n";
-}
+Train::Train(const Train& other) : destination(other.destination), number(other.number), time_of_departure(other.time_of_departure) 
+//{cout << "The copy constructor for the Train class is called\n";}
 
-Train::~Train() {cout << "The destructor for the Train class is called\n";}
+Train::~Train() //{cout << "The destructor for the Train class is called\n";}
 
 string Train::get_destination() {
     return this->destination;

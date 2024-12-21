@@ -1,14 +1,10 @@
 #include "container.h"
 #include <sstream>
-Container::Container() : head(nullptr), tail(nullptr), count(0) {cout << "The constructor without parameters for the Container class is called\n";}
+Container::Container() : head(nullptr), tail(nullptr), count(0) //{cout << "The constructor without parameters for the Container class is called\n";}
 
-Container::Container(Node* h, Node* t, const int c) : head(h), tail(t), count(c) {
-    cout << "The constructor with parameters for the Container class is called\n";
-}
+Container::Container(Node* h, Node* t, const int c) : head(h), tail(t), count(c) //{cout << "The constructor with parameters for the Container class is called\n";}
 
-Container::Container(const Container& other) : head(other.head), tail(other.tail), count(other.count) {
-    cout << "The copy constructor for the Container class is called\n";
-}
+Container::Container(const Container& other) : head(other.head), tail(other.tail), count(other.count) //{cout << "The copy constructor for the Container class is called\n";}
 
 Container::~Container() {
     while (head != nullptr) {
@@ -19,7 +15,7 @@ Container::~Container() {
     }
     tail = nullptr;
     count = 0;
-    cout << "The destructor for the Container class is called" << endl;
+    //cout << "The destructor for the Container class is called" << endl;
 }
 
 

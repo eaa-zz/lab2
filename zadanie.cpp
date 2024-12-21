@@ -1,27 +1,17 @@
 #include "zadanie.h"
 
-SentenceFilter::SentenceFilter() : source(""), count(0), isTextSource(false) {
-    cout << "The constructor without parameters for the SentenceFilter\n";
-}
+SentenceFilter::SentenceFilter() : source(""), count(0), isTextSource(false) //{cout << "The constructor without parameters for the SentenceFilter\n";}
 
 SentenceFilter::SentenceFilter(const string& filename, int count)
-    : source(filename), count(count), isTextSource(false) {
-    cout << "The constructor with parameters for the SentenceFilter\n";
-}
+    : source(filename), count(count), isTextSource(false) //{cout << "The constructor with parameters for the SentenceFilter\n";}
 
 SentenceFilter::SentenceFilter(const string& text, int count, bool isText)
-    : source(text), count(count), isTextSource(isText) {
-    cout << "The constructor with parameters for the SentenceFilter\n";
-}
+    : source(text), count(count), isTextSource(isText) //{cout << "The constructor with parameters for the SentenceFilter\n";}
 
 SentenceFilter::SentenceFilter(const SentenceFilter& other)
-    : source(other.source), count(other.count), isTextSource(other.isTextSource) {
-    cout << "The copy constructor for the SentenceFilter\n";
-}
+    : source(other.source), count(other.count), isTextSource(other.isTextSource) //{cout << "The copy constructor for the SentenceFilter\n";}
 
-SentenceFilter::~SentenceFilter() {
-    cout << "The destructor for the SentenceFilter\n";
-}
+SentenceFilter::~SentenceFilter() //{cout << "The destructor for the SentenceFilter\n";}
 
 void SentenceFilter::result() const { // чтение данных из файла или строки
     string text;

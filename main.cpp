@@ -115,26 +115,26 @@ int words_program() {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Consume newline
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
 
         if (choice == 1) {
             string text;
             cout << "Text: ";
-            getline(cin, text); //Correct way to get a line of text
+            getline(cin, text); 
 
-            SentenceFilter filter(text, 0, true); //Use correct constructor
+            SentenceFilter filter(text, 0, true); 
             filter.result();
         } else if (choice == 2) {
             string filename;
             cout << "File name: ";
-            getline(cin, filename); // Correctly read filename as a string
+            getline(cin, filename); 
 
-            SentenceFilter filter(filename, 0); //Use correct constructor
+            SentenceFilter filter(filename, 0); 
             filter.result();
         } else {
             throw out_of_range("Invalid choice.");
         }
-    } catch (const exception& e) { //Catch any exception
+    } catch (const exception& e) { 
         cerr << "Error: " << e.what() << endl;
         return 1;
     }
